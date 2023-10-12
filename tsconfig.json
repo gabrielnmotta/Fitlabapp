@@ -3,7 +3,7 @@
   "include": [
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/routes.js"  ],
   "compilerOptions": {
     "strict": true
   }

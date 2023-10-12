@@ -6,6 +6,9 @@ import Foods from "./src/screens/Foods";
 import { useEffect, useState } from "react";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { FIREBASE_AUTH } from "./FirebaseConfig";
+import { Routes } from "./src/routes";
+import { Dimensions } from "react-native";
+import UserCard from "./src/components/UserCard";
 
 const Stack = createNativeStackNavigator();
 
@@ -31,11 +34,13 @@ export default function App() {
 
   return (
     <NavigationContainer>
+      {user && <UserCard userName={user.email as string} />}
+
       <Stack.Navigator initialRouteName="Login">
         {user ? (
           <Stack.Screen
             name="Inside"
-            component={InsideLayout}
+            component={Routes}
             options={{ headerShown: false }}
           />
         ) : (

@@ -1,20 +1,17 @@
 import { NavigationProp } from "@react-navigation/native";
 import React from "react";
-import { Button, View } from "react-native";
-import { FIREBASE_AUTH } from "../../FirebaseConfig";
+import { Button, View, Text, Dimensions } from "react-native";
 
 interface RouterProps {
   navigation: NavigationProp<any, any>;
 }
 
 const Principal = ({ navigation }: RouterProps) => {
+  const { height } = Dimensions.get("window");
+
   return (
-    <View>
-      <Button
-        onPress={() => navigation.navigate("Foods")}
-        title="Open Details"
-      />
-      <Button onPress={() => FIREBASE_AUTH.signOut()} title="Logout" />
+    <View style={{ height: height }}>
+      <Text>Pagina principal</Text>
     </View>
   );
 };
