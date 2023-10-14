@@ -144,3 +144,66 @@ export const workouts: Workout[] = [
       "Ullamco commodo nostrud esse excepteur labore enim elit excepteur. Et non minim enim fugiat culpa sit sint irure irure amet reprehenderit enim non velit. Consectetur incididunt velit velit voluptate velit. Sint ex magna in aliquip. Dolore sunt deserunt cillum nostrud.",
   },
 ];
+
+interface Plan {
+  id: number;
+  name: string;
+  duration: string;
+  image: ImageSourcePropType;
+  location: string;
+  rating: number;
+  minutes: number;
+  calories: number;
+  description: string;
+}
+
+export const workoutPlans: Plan[] = [
+  {
+    id: 1,
+    name: "Leg muscle strength",
+    duration: "8 weeks",
+    location: "Home",
+    image: require("../../assets/workouts/photo-1434682966726-19ad3a76e143.jpeg"),
+    rating: 5,
+    minutes: 52,
+    calories: 350,
+    description:
+      "Quis consequat esse laborum enim eiusmod duis culpa enim nulla consequat aute. Amet exercitation deserunt nulla et sit do. Eu fugiat et anim labore. Minim non laboris in anim.",
+  },
+  {
+    id: 2,
+    name: "Body Pump",
+    duration: "8 weeks",
+    location: "Home",
+    image: require("../../assets/workouts/photo-1541534741688-6078c6bfb5c.jpeg"),
+    rating: 5,
+    minutes: 52,
+    calories: 350,
+    description:
+      "Velit aute culpa et sit aliqua quis incididunt consectetur esse do minim. Cupidatat cillum labore aliqua cupidatat exercitation minim occaecat nostrud Lorem culpa do proident ea. Voluptate amet irure nulla velit cillum magna dolore. Cillum labore ea ut Lorem adipisicing excepteur laboris ullamco magna dolor do consectetur ipsum. Magna aliquip est pariatur exercitation aute.",
+  },
+  {
+    id: 3,
+    name: "Leg muscle strength",
+    duration: "8 weeks",
+    location: "Home",
+    image: require("../../assets/workouts/photo-1546483875-ad9014c88eba.jpeg"),
+    rating: 5,
+    minutes: 52,
+    calories: 350,
+    description:
+      "Labore laborum laborum dolore laboris occaecat commodo. Do dolore commodo laborum exercitation non dolore nostrud elit voluptate velit excepteur officia ullamco reprehenderit. Quis nostrud tempor ullamco exercitation. Est reprehenderit elit ex consequat adipisicing laborum.",
+  },
+  {
+    id: 4,
+    name: "Leg muscle strength",
+    duration: "8 weeks",
+    location: "Home",
+    image: require("../../assets/workouts/photo-1434682966726-19ad3a76e143.jpeg"),
+    rating: 5,
+    minutes: 52,
+    calories: 350,
+    description:
+      "In velit culpa dolor in amet amet pariatur consectetur enim ea. Minim in labore nostrud labore officia labore velit proident labore aliquip ipsum ipsum ullamco aliquip. Magna anim reprehenderit nisi irure pariatur non. Ipsum minim ad ipsum cillum consequat. Ipsum aliquip ad nulla laborum reprehenderit esse commodo non.",
+  },
+];

@@ -1,3 +1,4 @@
+import "react-native-gesture-handler";
 import { NavigationProp } from "@react-navigation/native";
 import React from "react";
 import {
@@ -10,27 +11,20 @@ import {
   Image,
   StyleSheet,
 } from "react-native";
-import Search from "../components/Search";
 import HeaderResume from "../components/HeaderResume";
 import Spacing from "../constants/Spacing";
-import PersonalizedClick from "../components/PersonalizedClick";
-import { Colors } from "react-native/Libraries/NewAppScreen";
-import { workouts } from "../api";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { getCurrentDate } from "../utils";
 import Card from "../components/Card";
-import EChartsReact from "echarts-for-react";
+import DailySpendingChart from "../components/Charts/DailySpendingChart";
+import { workoutPlans, workouts } from "../api";
+import ExerciseCard from "../components/ExerciseCard";
+import { Colors } from "react-native/Libraries/NewAppScreen";
+import PersonalizedClick from "../components/PersonalizedClick";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 interface RouterProps {
   navigation: NavigationProp<any, any>;
 }
-
-const data = [
-  { quarter: 1, earnings: 13000 },
-  { quarter: 2, earnings: 16500 },
-  { quarter: 3, earnings: 14250 },
-  { quarter: 4, earnings: 19000 },
-];
 
 const Principal = ({ navigation }: RouterProps) => {
   const { height } = Dimensions.get("window");
@@ -38,34 +32,167 @@ const Principal = ({ navigation }: RouterProps) => {
   const currentDate = getCurrentDate();
 
   return (
-    <View style={{ height: height, paddingHorizontal: 6 }}>
-      <HeaderResume
-        title={`Resumo Diário - ${currentDate}`}
-        complementation="Ver Detalhado"
-        path="Statistics"
-      />
-      <Card>
-        <View>
-          <Text>Calorias Consumidas</Text>
-        </View>
-      </Card>
+    <ScrollView
+      style={{
+        paddingHorizontal: Spacing.padding.base,
+      }}
+    >
+      <View style={{ height: height, paddingHorizontal: 6 }}>
+        <HeaderResume
+          title={`Resumo Diário - ${currentDate}`}
+          complementation="Ver Detalhado"
+          path="Statistics"
+        />
+        <Card>
+          <View style={{ alignItems: "center" }}>
+            <DailySpendingChart />
+          </View>
+        </Card>
 
-      <HeaderResume
-        title={`Alimentação de hoje - ${currentDate}`}
-        icon="playlist-plus"
-      />
-      <HeaderResume
-        title={`Exercícios de hoje - ${currentDate}`}
-        icon="playlist-plus"
-      />
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        decelerationRate="fast"
-        pagingEnabled
-        snapToInterval={270 + Spacing.margin.lg}
-      ></ScrollView>
-    </View>
+        <HeaderResume
+          title={`Alimentação de hoje - ${currentDate}`}
+          icon="playlist-plus"
+        />
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          decelerationRate="fast"
+          pagingEnabled
+          snapToInterval={270 + Spacing.margin.lg}
+        >
+          {workoutPlans.map((plan) => (
+            <TouchableOpacity
+              style={{
+                padding: Spacing.padding.sm,
+                marginBottom: Spacing.margin.base,
+                backgroundColor: Colors.primary,
+                borderRadius: Spacing.borderRadius.base,
+                flexDirection: "row",
+              }}
+              key={plan.id}
+            >
+              <Image
+                source={plan.image}
+                style={{
+                  width: 100,
+                  height: 100,
+                  borderRadius: Spacing.borderRadius.base,
+                }}
+              />
+              <View
+                style={{
+                  marginLeft: Spacing.margin.base,
+                  justifyContent: "space-between",
+                }}
+              >
+                <PersonalizedClick style={{}}>{plan.name}</PersonalizedClick>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                  <Icon name="calendar-outline" size={16} color={Colors.text} />
+                  <PersonalizedClick
+                    style={{
+                      marginLeft: Spacing.margin.base,
+                    }}
+                  >
+                    {plan.duration} | {plan.location}
+                  </PersonalizedClick>
+                </View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                  <PersonalizedClick
+                    style={{
+                      marginLeft: Spacing.margin.sm,
+                    }}
+                  >
+                    {plan.rating}
+                  </PersonalizedClick>
+                </View>
+              </View>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+
+        <HeaderResume
+          title={`Exercícios de hoje - ${currentDate}`}
+          icon="playlist-plus"
+        />
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          decelerationRate="fast"
+          pagingEnabled
+          snapToInterval={270 + Spacing.margin.lg}
+        >
+          {workoutPlans.map((plan) => (
+            <TouchableOpacity
+              style={{
+                padding: Spacing.padding.sm,
+                marginBottom: Spacing.margin.base,
+                backgroundColor: Colors.primary,
+                borderRadius: Spacing.borderRadius.base,
+                flexDirection: "row",
+              }}
+              key={plan.id}
+            >
+              <Image
+                source={plan.image}
+                style={{
+                  width: 100,
+                  height: 100,
+                  borderRadius: Spacing.borderRadius.base,
+                }}
+              />
+              <View
+                style={{
+                  marginLeft: Spacing.margin.base,
+                  justifyContent: "space-between",
+                }}
+              >
+                <PersonalizedClick style={{}}>{plan.name}</PersonalizedClick>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                  <Icon name="calendar-outline" size={16} color={Colors.text} />
+                  <PersonalizedClick
+                    style={{
+                      marginLeft: Spacing.margin.base,
+                    }}
+                  >
+                    {plan.duration} | {plan.location}
+                  </PersonalizedClick>
+                </View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                  <PersonalizedClick
+                    style={{
+                      marginLeft: Spacing.margin.sm,
+                    }}
+                  >
+                    {plan.rating}
+                  </PersonalizedClick>
+                </View>
+              </View>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
+      <View style={{ height: 95 }}></View>
+    </ScrollView>
   );
 };
 
