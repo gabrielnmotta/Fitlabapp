@@ -5,10 +5,12 @@ import Principal from "./src/screens/Principal";
 import Foods from "./src/screens/Foods";
 import { useEffect, useState } from "react";
 import { User, onAuthStateChanged } from "firebase/auth";
-import { FIREBASE_AUTH } from "./FirebaseConfig";
+import { FIREBASE_AUTH, db } from "./FirebaseConfig";
 import { Routes } from "./src/routes";
 import { Dimensions } from "react-native";
 import UserCard from "./src/components/UserCard";
+import SignUp from "./src/screens/SignUp";
+import { doc, getDoc } from "firebase/firestore";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,16 +27,34 @@ function InsideLayout() {
 
 export default function App() {
   const [user, setUser] = useState<User | null>(null);
+  const [userName, setUserName] = useState<string>("");
+
+  const getUserData = async (uid: string) => {
+    try {
+      const userRef = doc(db, "users", uid);
+      const userSnap = await getDoc(userRef);
+
+      if (userSnap.exists()) {
+        const userData = userSnap.data();
+        setUserName(userData.name);
+      } else {
+        console.log("O usuário não existe no Firestore.");
+      }
+    } catch (error) {
+      console.error("Erro ao recuperar dados do Firestore:", error);
+    }
+  };
 
   useEffect(() => {
     onAuthStateChanged(FIREBASE_AUTH, (user) => {
       setUser(user);
     });
-  }, []);
+    getUserData(user?.uid as string);
+  }, [user]);
 
   return (
     <NavigationContainer>
-      {user && <UserCard userName={user.email as string} />}
+      {user && <UserCard userName={userName} />}
 
       <Stack.Navigator initialRouteName="Login">
         {user ? (
@@ -44,11 +64,18 @@ export default function App() {
             options={{ headerShown: false }}
           />
         ) : (
-          <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{ headerShown: false }}
-          />
+          <>
+            <Stack.Screen
+              name="Login"
+              component={Login}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="SignUp"
+              component={SignUp}
+              options={{ headerShown: false }}
+            />
+          </>
         )}
       </Stack.Navigator>
     </NavigationContainer>

@@ -15,13 +15,20 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { useNavigation } from "@react-navigation/native";
 
-const Logins = () => {
+const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [isFocused, setIsFocused] = useState(false);
   const auth = FIREBASE_AUTH;
+
+  const navigation = useNavigation();
+
+  const handleSignUpPress = () => {
+    navigation.navigate("SignUp" as never);
+  };
 
   const handleLogin = async () => {
     setLoading(true);
@@ -30,22 +37,6 @@ const Logins = () => {
       response;
     } catch (error) {
       alert(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const signUp = async () => {
-    setLoading(true);
-    try {
-      const response = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      console.log(response);
-    } catch (error) {
-      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -86,15 +77,14 @@ const Logins = () => {
               onPress={handleLogin}
               style={styles.loginButtonContainer}
             >
-              <Text style={styles.loginButtonText}>Login</Text>
+              <Text style={styles.loginButtonText}>Entrar</Text>
             </TouchableOpacity>
-            {/* <Button title="Create Account" onPress={signUp} /> */}
           </>
         )}
       </KeyboardAvoidingView>
       <View style={styles.signUpContainer}>
         <Text>Não possui cadastro ? </Text>
-        <Text style={styles.signUpText} onPress={signUp}>
+        <Text style={styles.signUpText} onPress={handleSignUpPress}>
           Clique Aqui{" "}
         </Text>
       </View>
@@ -102,7 +92,7 @@ const Logins = () => {
   );
 };
 
-export default Logins;
+export default Login;
 
 const styles = StyleSheet.create({
   container: {
