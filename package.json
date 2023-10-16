@@ -16,6 +16,7 @@
     "@react-navigation/native-stack": "^6.9.14",
     "@shopify/react-native-skia": "0.1.196",
     "@wuba/react-native-echarts": "^1.2.5",
+    "axios": "^1.5.1",
     "echarts": "^5.4.3",
     "echarts-for-react": "^3.0.2",
     "expo": "~49.0.13",

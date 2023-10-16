@@ -1,35 +1,51 @@
 import "react-native-gesture-handler";
-import { NavigationProp } from "@react-navigation/native";
-import React from "react";
+import { NavigationProp, useFocusEffect } from "@react-navigation/native";
+import React, { useEffect, useState } from "react";
 import {
-  Button,
   View,
-  Text,
   Dimensions,
   ScrollView,
-  TouchableOpacity,
-  Image,
-  StyleSheet,
+  ImageSourcePropType,
 } from "react-native";
 import HeaderResume from "../components/HeaderResume";
 import Spacing from "../constants/Spacing";
 import { getCurrentDate } from "../utils";
-import Card from "../components/Card";
-import DailySpendingChart from "../components/Charts/DailySpendingChart";
-import { workoutPlans, workouts } from "../api";
-import ExerciseCard from "../components/ExerciseCard";
-import { Colors } from "react-native/Libraries/NewAppScreen";
-import PersonalizedClick from "../components/PersonalizedClick";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import DailySpendingChart from "../components/Charts/DailyResumeChart";
+import SimpleCard from "../components/Card/SimpleCard";
+import AtualCard from "../components/Card/AtualCard";
+import useApp from "../context/AppContext";
 
 interface RouterProps {
   navigation: NavigationProp<any, any>;
 }
 
 const Principal = ({ navigation }: RouterProps) => {
-  const { height } = Dimensions.get("window");
+  const [totalCaloriesIngested, setTotalCaloriesIngested] = useState<number>(0);
+  const [totalCaloriesSpended, setTotalCaloriesSpended] = useState<number>(0);
 
+  const { height } = Dimensions.get("window");
+  const {
+    getFoodsAtualData,
+    foodsAtualData,
+    getWorkoutsAtualData,
+    workoutsAtualData,
+  } = useApp();
   const currentDate = getCurrentDate();
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getWorkoutsAtualData();
+      getFoodsAtualData();
+
+      setTotalCaloriesIngested(
+        foodsAtualData.reduce((total, data) => total + data.calories, 0)
+      );
+
+      setTotalCaloriesSpended(
+        workoutsAtualData.reduce((total, data) => total + data.calories, 0)
+      );
+    }, [])
+  );
 
   return (
     <ScrollView
@@ -43,11 +59,14 @@ const Principal = ({ navigation }: RouterProps) => {
           complementation="Ver Detalhado"
           path="Statistics"
         />
-        <Card>
+        <SimpleCard>
           <View style={{ alignItems: "center" }}>
-            <DailySpendingChart />
+            <DailySpendingChart
+              totalCaloriesIngested={totalCaloriesIngested}
+              totalCaloriesSpended={totalCaloriesSpended}
+            />
           </View>
-        </Card>
+        </SimpleCard>
 
         <HeaderResume
           title={`Alimentação de hoje - ${currentDate}`}
@@ -60,63 +79,15 @@ const Principal = ({ navigation }: RouterProps) => {
           pagingEnabled
           snapToInterval={270 + Spacing.margin.lg}
         >
-          {workoutPlans.map((plan) => (
-            <TouchableOpacity
-              style={{
-                padding: Spacing.padding.sm,
-                marginBottom: Spacing.margin.base,
-                backgroundColor: Colors.primary,
-                borderRadius: Spacing.borderRadius.base,
-                flexDirection: "row",
-              }}
-              key={plan.id}
-            >
-              <Image
-                source={plan.image}
-                style={{
-                  width: 100,
-                  height: 100,
-                  borderRadius: Spacing.borderRadius.base,
-                }}
-              />
-              <View
-                style={{
-                  marginLeft: Spacing.margin.base,
-                  justifyContent: "space-between",
-                }}
-              >
-                <PersonalizedClick style={{}}>{plan.name}</PersonalizedClick>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                  }}
-                >
-                  <Icon name="calendar-outline" size={16} color={Colors.text} />
-                  <PersonalizedClick
-                    style={{
-                      marginLeft: Spacing.margin.base,
-                    }}
-                  >
-                    {plan.duration} | {plan.location}
-                  </PersonalizedClick>
-                </View>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                  }}
-                >
-                  <PersonalizedClick
-                    style={{
-                      marginLeft: Spacing.margin.sm,
-                    }}
-                  >
-                    {plan.rating}
-                  </PersonalizedClick>
-                </View>
-              </View>
-            </TouchableOpacity>
+          {foodsAtualData.map((data) => (
+            <AtualCard
+              name={data.name}
+              image={data.img as string}
+              quantity={data.quantity}
+              id={data.id}
+              type="foods"
+              calories={data.calories}
+            />
           ))}
         </ScrollView>
 
@@ -129,65 +100,17 @@ const Principal = ({ navigation }: RouterProps) => {
           showsHorizontalScrollIndicator={false}
           decelerationRate="fast"
           pagingEnabled
-          snapToInterval={270 + Spacing.margin.lg}
+          snapToInterval={270 + Spacing.margin.xl}
         >
-          {workoutPlans.map((plan) => (
-            <TouchableOpacity
-              style={{
-                padding: Spacing.padding.sm,
-                marginBottom: Spacing.margin.base,
-                backgroundColor: Colors.primary,
-                borderRadius: Spacing.borderRadius.base,
-                flexDirection: "row",
-              }}
-              key={plan.id}
-            >
-              <Image
-                source={plan.image}
-                style={{
-                  width: 100,
-                  height: 100,
-                  borderRadius: Spacing.borderRadius.base,
-                }}
-              />
-              <View
-                style={{
-                  marginLeft: Spacing.margin.base,
-                  justifyContent: "space-between",
-                }}
-              >
-                <PersonalizedClick style={{}}>{plan.name}</PersonalizedClick>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                  }}
-                >
-                  <Icon name="calendar-outline" size={16} color={Colors.text} />
-                  <PersonalizedClick
-                    style={{
-                      marginLeft: Spacing.margin.base,
-                    }}
-                  >
-                    {plan.duration} | {plan.location}
-                  </PersonalizedClick>
-                </View>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                  }}
-                >
-                  <PersonalizedClick
-                    style={{
-                      marginLeft: Spacing.margin.sm,
-                    }}
-                  >
-                    {plan.rating}
-                  </PersonalizedClick>
-                </View>
-              </View>
-            </TouchableOpacity>
+          {workoutsAtualData.map((data) => (
+            <AtualCard
+              name={data.name}
+              image={data.img}
+              duration={data.duration}
+              id={data.id}
+              type="workouts"
+              calories={data.calories}
+            />
           ))}
         </ScrollView>
       </View>

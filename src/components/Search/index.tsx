@@ -4,7 +4,11 @@ import Colors from "../../constants/Colors";
 import FontSize from "../../constants/FontSize";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-const Search = () => {
+interface SearchI {
+  setSearch: (text: string) => void;
+}
+
+const Search = ({ setSearch }: SearchI) => {
   return (
     <View
       style={{
@@ -26,6 +30,7 @@ const Search = () => {
           fontSize: FontSize.base,
           width: "80%",
         }}
+        onChangeText={(text) => setSearch(text)}
       />
     </View>
   );

@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/fitlab.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.gabrielnmotta.fitlabapp"
     },
     "web": {
       "favicon": "./assets/fitlab.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2ddbaaf8-2d07-4e36-b165-0547c0fc1283"
+      }
     }
   }
 }

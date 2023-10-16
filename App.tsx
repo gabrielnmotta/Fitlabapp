@@ -11,6 +11,7 @@ import { Dimensions } from "react-native";
 import UserCard from "./src/components/UserCard";
 import SignUp from "./src/screens/SignUp";
 import { doc, getDoc } from "firebase/firestore";
+import { AppProvider } from "./src/context/AppContext";
 
 const Stack = createNativeStackNavigator();
 
@@ -53,31 +54,33 @@ export default function App() {
   }, [user]);
 
   return (
-    <NavigationContainer>
-      {user && <UserCard userName={userName} />}
+    <AppProvider>
+      <NavigationContainer>
+        {user && <UserCard userName={userName} />}
 
-      <Stack.Navigator initialRouteName="Login">
-        {user ? (
-          <Stack.Screen
-            name="Inside"
-            component={Routes}
-            options={{ headerShown: false }}
-          />
-        ) : (
-          <>
+        <Stack.Navigator initialRouteName="Login">
+          {user ? (
             <Stack.Screen
-              name="Login"
-              component={Login}
+              name="Inside"
+              component={Routes}
               options={{ headerShown: false }}
             />
-            <Stack.Screen
-              name="SignUp"
-              component={SignUp}
-              options={{ headerShown: false }}
-            />
-          </>
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
+          ) : (
+            <>
+              <Stack.Screen
+                name="Login"
+                component={Login}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="SignUp"
+                component={SignUp}
+                options={{ headerShown: false }}
+              />
+            </>
+          )}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AppProvider>
   );
 }

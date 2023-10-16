@@ -1,0 +1,36 @@
+import { ImagePathsType } from "../context/AppContext/type";
+
+const foodsImagePaths: ImagePathsType = {
+  MACA: require("../../assets/foods/MACA.jpg"),
+  BANANA: require("../../assets/foods/BANANA.jpg"),
+  LARANJA: require("../../assets/foods/LARANJA.jpg"),
+  PERA: require("../../assets/foods/PERA.jpg"),
+  ABACAXI: require("../../assets/foods/ABACAXI.jpg"),
+  UVA: require("../../assets/foods/UVA.jpg"),
+  MELANCIA: require("../../assets/foods/MELANCIA.jpg"),
+  MELAO: require("../../assets/foods/MELAO.jpg"),
+  MORANGO: require("../../assets/foods/MORANGO.jpg"),
+  CENOURA: require("../../assets/foods/CENOURA.jpg"),
+  BROCOLIS: require("../../assets/foods/BROCOLIS.jpg"),
+  ESPINAFRE: require("../../assets/foods/ESPINAFRE.jpg"),
+  TOMATE: require("../../assets/foods/TOMATE.jpg"),
+  CEBOLA: require("../../assets/foods/CEBOLA.jpg"),
+  ALFACE: require("../../assets/foods/ALFACE.jpg"),
+  ARROZ: require("../../assets/foods/ARROZ.jpg"),
+  FEIJAO: require("../../assets/foods/FEIJAO.jpg"),
+  FRANGO: require("../../assets/foods/FRANGO.jpg"),
+  PEIXE: require("../../assets/foods/PEIXE.jpg"),
+  CARNE: require("../../assets/foods/CARNE.jpg"),
+  OVOS: require("../../assets/foods/OVOS.jpg"),
+  IOGURTE: require("../../assets/foods/IOGURTE.jpg"),
+  QUEIJO: require("../../assets/foods/QUEIJO.jpg"),
+  LEITE: require("../../assets/foods/LEITE.jpg"),
+  AVEIA: require("../../assets/foods/AVEIA.jpg"),
+  AMENDOAS: require("../../assets/foods/AMENDOAS.jpg"),
+  AZEITONAS: require("../../assets/foods/AZEITONAS.jpg"),
+  CHOCOLATE: require("../../assets/foods/CHOCOLATE.jpg"),
+  SORVETE: require("../../assets/foods/SORVETE.jpg"),
+  BOLACHA: require("../../assets/foods/BOLACHA.jpg"),
+};
+
+export default foodsImagePaths;
