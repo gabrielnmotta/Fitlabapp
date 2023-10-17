@@ -1,0 +1,295 @@
+{
+  "uuid": "ab6ebdaf-6565-4901-b38b-37470d470e54",
+  "lastMigration": 28,
+  "name": "FitlabAPI",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "192.168.1.15",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "a499e6c5-b101-418f-919a-88a88237a822",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/v1/foods",
+      "responses": [
+        {
+          "uuid": "f7ee83b2-3b84-46f7-94f3-2d202daded9e",
+          "body": "[\r\n    {\"id\": 1, \"name\": \"Maçã\", \"calories\": 52, \"img\": \"MACA\"},\r\n    {\"id\": 2, \"name\": \"Banana\", \"calories\": 89, \"img\": \"BANANA\"},\r\n    {\"id\": 3, \"name\": \"Laranja\", \"calories\": 47, \"img\": \"LARANJA\"},\r\n    {\"id\": 4, \"name\": \"Pera\", \"calories\": 57, \"img\": \"PERA\"},\r\n    {\"id\": 5, \"name\": \"Abacaxi\", \"calories\": 50, \"img\": \"ABACAXI\"},\r\n    {\"id\": 6, \"name\": \"Uva\", \"calories\": 69, \"img\": \"UVA\"},\r\n    {\"id\": 7, \"name\": \"Melancia\", \"calories\": 30, \"img\": \"MELANCIA\"},\r\n    {\"id\": 8, \"name\": \"Melão\", \"calories\": 36, \"img\": \"MELAO\"},\r\n    {\"id\": 9, \"name\": \"Morango\", \"calories\": 33, \"img\": \"MORANGO\"},\r\n    {\"id\": 10, \"name\": \"Cenoura\", \"calories\": 41, \"img\": \"CENOURA\"},\r\n    {\"id\": 11, \"name\": \"Brócolis\", \"calories\": 34, \"img\": \"BROCOLIS\"},\r\n    {\"id\": 12, \"name\": \"Espinafre\", \"calories\": 23, \"img\": \"ESPINAFRE\"},\r\n    {\"id\": 13, \"name\": \"Tomate\", \"calories\": 18, \"img\": \"TOMATE\"},\r\n    {\"id\": 14, \"name\": \"Cebola\", \"calories\": 40, \"img\": \"CEBOLA\"},\r\n    {\"id\": 15, \"name\": \"Alface\", \"calories\": 15, \"img\": \"ALFACE\"},\r\n    {\"id\": 16, \"name\": \"Arroz\", \"calories\": 130, \"img\": \"ARROZ\"},\r\n    {\"id\": 17, \"name\": \"Feijão\", \"calories\": 150, \"img\": \"FEIJAO\"},\r\n    {\"id\": 18, \"name\": \"Frango\", \"calories\": 239, \"img\": \"FRANGO\"},\r\n    {\"id\": 19, \"name\": \"Peixe\", \"calories\": 200, \"img\": \"PEIXE\"},\r\n    {\"id\": 20, \"name\": \"Carne\", \"calories\": 250, \"img\": \"CARNE\"},\r\n    {\"id\": 21, \"name\": \"Ovos\", \"calories\": 155, \"img\": \"OVOS\"},\r\n    {\"id\": 22, \"name\": \"Iogurte\", \"calories\": 59, \"img\": \"IOGURTE\"},\r\n    {\"id\": 23, \"name\": \"Queijo\", \"calories\": 402, \"img\": \"QUEIJO\"},\r\n    {\"id\": 24, \"name\": \"Leite\", \"calories\": 42, \"img\": \"LEITE\"},\r\n    {\"id\": 25, \"name\": \"Aveia\", \"calories\": 389, \"img\": \"AVEIA\"},\r\n    {\"id\": 26, \"name\": \"Amêndoas\", \"calories\": 576, \"img\": \"AMENDOAS\"},\r\n    {\"id\": 27, \"name\": \"Azeitonas\", \"calories\": 115, \"img\": \"AZEITONAS\"},\r\n    {\"id\": 28, \"name\": \"Chocolate\", \"calories\": 546, \"img\": \"CHOCOLATE\"},\r\n    {\"id\": 29, \"name\": \"Sorvete\", \"calories\": 207, \"img\": \"SORVETE\"},\r\n    {\"id\": 30, \"name\": \"Bolacha\", \"calories\": 200, \"img\": \"BOLACHA\"}\r\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": true,
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1479c95c-dd73-49ec-a8e6-11d75f8e21da",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/v1/workouts",
+      "responses": [
+        {
+          "uuid": "ec4c23a9-6942-49e2-a694-70efacaa4c81",
+          "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"Corrida\",\n    \"calories\": 600,\n    \"img\": \"CORRIDA\"\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Caminhada\",\n    \"calories\": 300,\n    \"img\": \"CAMINHADA\"\n  },\n  {\n    \"id\": 3,\n    \"name\": \"Natação\",\n    \"calories\": 500,\n    \"img\": \"NATACAO\"\n  },\n  {\n    \"id\": 4,\n    \"name\": \"Ciclismo\",\n    \"calories\": 400,\n    \"img\": \"CICLISMO\"\n  },\n  {\n    \"id\": 5,\n    \"name\": \"Pular corda\",\n    \"calories\": 700,\n    \"img\": \"PULAR_CORDA\"\n  },\n  {\n    \"id\": 6,\n    \"name\": \"Musculação\",\n    \"calories\": 400,\n    \"img\": \"MUSCULACAO\"\n  },\n  {\n    \"id\": 7,\n    \"name\": \"Yoga\",\n    \"calories\": 200,\n    \"img\": \"YOGA\"\n  },\n  {\n    \"id\": 8,\n    \"name\": \"Pilates\",\n    \"calories\": 250,\n    \"img\": \"PILATES\"\n  },\n  {\n    \"id\": 9,\n    \"name\": \"Dança\",\n    \"calories\": 350,\n    \"img\": \"DANCA\"\n  },\n  {\n    \"id\": 10,\n    \"name\": \"Pilates\",\n    \"calories\": 250,\n    \"img\": \"PILATES\"\n  },\n  {\n    \"id\": 11,\n    \"name\": \"Alongamento\",\n    \"calories\": 150,\n    \"img\": \"ALONGAMENTO\"\n  },\n  {\n    \"id\": 12,\n    \"name\": \"Zumba\",\n    \"calories\": 400,\n    \"img\": \"ZUMBA\"\n  },\n  {\n    \"id\": 13,\n    \"name\": \"Basquete\",\n    \"calories\": 450,\n    \"img\": \"BASQUETE\"\n  },\n  {\n    \"id\": 14,\n    \"name\": \"Futebol\",\n    \"calories\": 500,\n    \"img\": \"FUTEBOL\"\n  },\n  {\n    \"id\": 15,\n    \"name\": \"Vôlei\",\n    \"calories\": 350,\n    \"img\": \"VOLEI\"\n  },\n  {\n    \"id\": 16,\n    \"name\": \"Tênis\",\n    \"calories\": 400,\n    \"img\": \"TENIS\"\n  },\n  {\n    \"id\": 17,\n    \"name\": \"Ginástica\",\n    \"calories\": 300,\n    \"img\": \"GINASTICA\"\n  },\n  {\n    \"id\": 18,\n    \"name\": \"Escalada\",\n    \"calories\": 650,\n    \"img\": \"ESCALADA\"\n  },\n  {\n    \"id\": 19,\n    \"name\": \"Surf\",\n    \"calories\": 200,\n    \"img\": \"SURF\"\n  },\n  {\n    \"id\": 20,\n    \"name\": \"Remo\",\n    \"calories\": 450,\n    \"img\": \"REMO\"\n  },\n  {\n    \"id\": 21,\n    \"name\": \"Pular corda\",\n    \"calories\": 700,\n    \"img\": \"PULAR_CORDA\"\n  },\n  {\n    \"id\": 22,\n    \"name\": \"Boxe\",\n    \"calories\": 600,\n    \"img\": \"BOXE\"\n  },\n  {\n    \"id\": 23,\n    \"name\": \"Artes marciais\",\n    \"calories\": 500,\n    \"img\": \"ARTESMARCIAIS\"\n  },\n  {\n    \"id\": 24,\n    \"name\": \"Golfe\",\n    \"calories\": 250,\n    \"img\": \"GOLFE\"\n  },\n  {\n    \"id\": 25,\n    \"name\": \"Tênis de mesa\",\n    \"calories\": 200,\n    \"img\": \"TENIS_DE_MESA\"\n  },\n  {\n    \"id\": 26,\n    \"name\": \"Caminhada rápida\",\n    \"calories\": 350,\n    \"img\": \"CAMINHADA_RAPIDA\"\n  },\n  {\n    \"id\": 27,\n    \"name\": \"Pilates\",\n    \"calories\": 250,\n    \"img\": \"PILATES\"\n  },\n  {\n    \"id\": 28,\n    \"name\": \"Bicicleta ergométrica\",\n    \"calories\": 300,\n    \"img\": \"BICICLETA_ERGOMETRICA\"\n  },\n  {\n    \"id\": 29,\n    \"name\": \"Spinning\",\n    \"calories\": 400,\n    \"img\": \"SPINNING\"\n  },\n  {\n    \"id\": 30,\n    \"name\": \"Zumba\",\n    \"calories\": 400,\n    \"img\": \"ZUMBA\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a92492a8-7a3e-4d33-99a4-cdf7041b3a00",
+      "type": "crud",
+      "documentation": "",
+      "method": "",
+      "endpoint": "api/v1/workouts_atual_data",
+      "responses": [
+        {
+          "uuid": "105c1e7b-d83d-47d7-b708-89838f6a0535",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "3tn7",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        },
+        {
+          "uuid": "211f8662-fd5e-4290-b6ec-9ef16a3bd5a5",
+          "body": "{\n  \"msg\": \"OK\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id"
+        },
+        {
+          "uuid": "cea8a568-75f1-426a-946f-d5538455e641",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fb9b4455-50ea-490f-89aa-66f58b75285d",
+      "type": "crud",
+      "documentation": "",
+      "method": "",
+      "endpoint": "api/v1/foods_atual_data",
+      "responses": [
+        {
+          "uuid": "53f32a60-222d-45cc-842a-3819b5e146f1",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "b2kz",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1dc5f334-8d62-4600-8052-d28a6ebba537",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/v1/eated_in_week",
+      "responses": [
+        {
+          "uuid": "a2dac605-0b7a-4697-93ae-0293332082ff",
+          "body": "{\n  \"date\": [\"10/10\",\"11/10\",\"12/10\",\"13/10\",\"14/10\",\"15/10\",\"16/10\",\"17/10\"],\n  \"values\": [150, 30, 300, 900, 600, 390, 570, 810]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e3bfec68-6d5c-4c14-8f56-ab1521561072",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/v1/most_eated",
+      "responses": [
+        {
+          "uuid": "fb0aaa08-c2cd-460d-b89f-ad47d94530c5",
+          "body": "[\r\n  {\"value\": 1048, \"name\": \"Maçã\"},\r\n  {\"value\": 735, \"name\": \"Uva\"},\r\n  {\"value\": 580, \"name\": \"Arroz\"},\r\n  {\"value\": 484, \"name\": \"Frango\"},\r\n  {\"value\": 300, \"name\": \"Pera\"}\r\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "a499e6c5-b101-418f-919a-88a88237a822"
+    },
+    {
+      "type": "route",
+      "uuid": "1479c95c-dd73-49ec-a8e6-11d75f8e21da"
+    },
+    {
+      "type": "route",
+      "uuid": "a92492a8-7a3e-4d33-99a4-cdf7041b3a00"
+    },
+    {
+      "type": "route",
+      "uuid": "fb9b4455-50ea-490f-89aa-66f58b75285d"
+    },
+    {
+      "type": "route",
+      "uuid": "1dc5f334-8d62-4600-8052-d28a6ebba537"
+    },
+    {
+      "type": "route",
+      "uuid": "e3bfec68-6d5c-4c14-8f56-ab1521561072"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [
+    {
+      "uuid": "24621c9d-27ff-4594-93e0-ebcb541e87fe",
+      "id": "3tn7",
+      "name": "workouts_atual_data",
+      "documentation": "",
+      "value": "[\n  {\n    \"id\": 1,\n    \"name\": \"Corrida\",\n    \"calories\": 600,\n    \"img\": \"CORRIDA\",\n    \"duration\": 100\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Caminhada\",\n    \"calories\": 300,\n    \"img\": \"CAMINHADA\",\n    \"duration\": 100\n  },\n  {\n    \"id\": 3,\n    \"name\": \"Natação\",\n    \"calories\": 500,\n    \"img\": \"NATACAO\",\n    \"duration\": 100\n  },\n  {\n    \"id\": 4,\n    \"name\": \"Ciclismo\",\n    \"calories\": 400,\n    \"img\": \"CICLISMO\",\n    \"duration\": 100\n  },\n  {\n    \"id\": 5,\n    \"name\": \"Pular corda\",\n    \"calories\": 700,\n    \"img\": \"PULAR_CORDA\",\n    \"duration\": 100\n  },\n  {\n    \"id\": 6,\n    \"name\": \"Musculação\",\n    \"calories\": 400,\n    \"img\": \"MUSCULACAO\",\n    \"duration\": 100\n  },\n  {\n    \"id\": 7,\n    \"name\": \"Yoga\",\n    \"calories\": 200,\n    \"img\": \"YOGA\",\n    \"duration\": 100\n  }\n]"
+    },
+    {
+      "uuid": "e07a7c9e-090f-4833-9570-c46af991dcc1",
+      "id": "b2kz",
+      "name": "foods_atual_data",
+      "documentation": "",
+      "value": "[\r\n  {\"id\": 1, \"name\": \"Maçã\", \"calories\": 52, \"img\": \"MACA\", \"quantity\": 30},\r\n  {\"id\": 2, \"name\": \"Banana\", \"calories\": 89, \"img\": \"BANANA\", \"quantity\": 40},\r\n  {\"id\": 3, \"name\": \"Laranja\", \"calories\": 47, \"img\": \"LARANJA\", \"quantity\": 50},\r\n  {\"id\": 4, \"name\": \"Pera\", \"calories\": 57, \"img\": \"PERA\", \"quantity\": 60},\r\n  {\"id\": 5, \"name\": \"Abacaxi\", \"calories\": 50, \"img\": \"ABACAXI\", \"quantity\": 70},\r\n  {\"id\": 6, \"name\": \"Uva\", \"calories\": 69, \"img\": \"UVA\", \"quantity\": 80},\r\n  {\"id\": 7, \"name\": \"Melancia\", \"calories\": 30, \"img\": \"MELANCIA\", \"quantity\": 90}\r\n]"
+    }
+  ]
+}
