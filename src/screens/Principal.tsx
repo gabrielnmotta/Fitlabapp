@@ -32,20 +32,10 @@ const Principal = ({ navigation }: RouterProps) => {
   } = useApp();
   const currentDate = getCurrentDate();
 
-  useFocusEffect(
-    React.useCallback(() => {
-      getWorkoutsAtualData();
-      getFoodsAtualData();
-
-      setTotalCaloriesIngested(
-        foodsAtualData.reduce((total, data) => total + data.calories, 0)
-      );
-
-      setTotalCaloriesSpended(
-        workoutsAtualData.reduce((total, data) => total + data.calories, 0)
-      );
-    }, [])
-  );
+  useEffect(() => {
+    getFoodsAtualData();
+    getFoodsAtualData();
+  }, []);
 
   return (
     <ScrollView
@@ -61,10 +51,7 @@ const Principal = ({ navigation }: RouterProps) => {
         />
         <SimpleCard>
           <View style={{ alignItems: "center" }}>
-            <DailySpendingChart
-              totalCaloriesIngested={totalCaloriesIngested}
-              totalCaloriesSpended={totalCaloriesSpended}
-            />
+            <DailySpendingChart />
           </View>
         </SimpleCard>
 

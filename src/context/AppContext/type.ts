@@ -29,6 +29,16 @@ export interface ImagePathsType {
   [key: string]: ImageSourcePropType;
 }
 
+export interface MostEatedI {
+  value: number;
+  name: string;
+}
+
+export interface CaloriesEatedI {
+  date: string[];
+  values: number[];
+}
+
 export interface AppContextI {
   getFoods: () => void;
   foods: FoodI[];

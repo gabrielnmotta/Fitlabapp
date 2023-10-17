@@ -1,5 +1,5 @@
 import "react-native-gesture-handler";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { View } from "react-native";
 import * as echarts from "echarts/core";
 import { LineChart } from "echarts/charts";
@@ -8,24 +8,28 @@ import { SVGRenderer, SkiaChart } from "@wuba/react-native-echarts";
 import { PieChart } from "echarts/charts";
 import { GaugeChart } from "echarts/charts";
 import useApp from "../../../context/AppContext";
+import { getCurrentDate } from "../../../utils";
 
 echarts.use([SVGRenderer, LineChart, GridComponent, PieChart, GaugeChart]);
 
-interface DailyResumeChartI {
-  totalCaloriesIngested: number;
-  totalCaloriesSpended: number;
-}
-
-const DailyResumeChart = ({
-  totalCaloriesIngested,
-  totalCaloriesSpended,
-}: DailyResumeChartI) => {
+const DailyResumeChart = () => {
+  const [totalCaloriesIngested, setTotalCaloriesIngested] = useState<number>(0);
+  const [totalCaloriesSpended, setTotalCaloriesSpended] = useState<number>(0);
   const skiaRef = useRef(null);
+  const { foodsAtualData, workoutsAtualData } = useApp();
+  const currentDate = getCurrentDate();
 
   useEffect(() => {
+    setTotalCaloriesIngested(
+      foodsAtualData.reduce((total, data) => total + data.calories, 0)
+    );
+
+    setTotalCaloriesSpended(
+      workoutsAtualData.reduce((total, data) => total + data.calories, 0)
+    );
     const gaugeData = [
       {
-        value: 390,
+        value: totalCaloriesSpended ? totalCaloriesSpended : 190,
         name: "Calorias Gastadas",
         title: {
           offsetCenter: ["0%", "-35%"],
@@ -36,7 +40,7 @@ const DailyResumeChart = ({
         },
       },
       {
-        value: 100,
+        value: totalCaloriesIngested ? totalCaloriesIngested : 300,
         name: "Calorias Ingeridas",
         title: {
           offsetCenter: ["0%", "-5%"],

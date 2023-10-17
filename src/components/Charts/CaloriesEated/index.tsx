@@ -1,52 +1,68 @@
 import "react-native-gesture-handler";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { View } from "react-native";
 import * as echarts from "echarts/core";
 import { LineChart, RadarChart } from "echarts/charts";
 import { GridComponent } from "echarts/components";
 import { SVGRenderer, SkiaChart } from "@wuba/react-native-echarts";
 import { PieChart } from "echarts/charts";
-import { GaugeChart } from "echarts/charts";
-import useApp from "../../../context/AppContext";
+import { CaloriesEatedI } from "../../../context/AppContext/type";
 
 echarts.use([SVGRenderer, LineChart, GridComponent, PieChart, RadarChart]);
 
 const CaloriesEated = () => {
   const skiaRef = useRef(null);
+  const [caloriesEated, setCaloriesEated] = useState<CaloriesEatedI>(
+    {} as CaloriesEatedI
+  );
+
+  const getCaloriesEated = async () => {
+    try {
+      const response = await fetch(
+        "http://192.168.1.15:3000/api/v1/calories_eated"
+      );
+      const data = await response.json();
+
+      if (response.status === 200) {
+        setCaloriesEated(data);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   useEffect(() => {
+    getCaloriesEated();
     const option = {
-      title: {
-        text: "Basic Radar Chart",
+      xAxis: {
+        type: "category",
+        legend: {},
+        data: caloriesEated.date
+          ? caloriesEated
+          : [
+              "10/10",
+              "11/10",
+              "12/10",
+              "13/10",
+              "14/10",
+              "15/10",
+              "16/10",
+              "17/10",
+            ],
       },
-      legend: {
-        data: ["Allocated Budget", "Actual Spending"],
-      },
-      radar: {
-        // shape: 'circle',
-        indicator: [
-          { name: "Sales", max: 6500 },
-          { name: "Administration", max: 16000 },
-          { name: "Information Technology", max: 30000 },
-          { name: "Customer Support", max: 38000 },
-          { name: "Development", max: 52000 },
-          { name: "Marketing", max: 25000 },
-        ],
+      yAxis: {
+        type: "value",
       },
       series: [
         {
-          name: "Budget vs spending",
-          type: "radar",
-          data: [
-            {
-              value: [4200, 3000, 20000, 35000, 50000, 18000],
-              name: "Allocated Budget",
-            },
-            {
-              value: [5000, 14000, 28000, 26000, 42000, 21000],
-              name: "Actual Spending",
-            },
-          ],
+          data: caloriesEated.date
+            ? caloriesEated.date
+            : [150, 30, 300, 900, 600, 390, 570, 810],
+          type: "bar",
+          showBackground: true,
+          backgroundStyle: {
+            color: "rgba(180, 180, 180, 0.2)",
+          },
         },
       ],
     };
@@ -55,7 +71,7 @@ const CaloriesEated = () => {
       chart = echarts.init(skiaRef.current, "light", {
         renderer: "svg",
         width: 350,
-        height: 150,
+        height: 300,
       });
       chart.setOption(option);
     }

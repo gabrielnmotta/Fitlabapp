@@ -4,6 +4,7 @@ import Spacing from "../constants/Spacing";
 import SimpleCard from "../components/Card/SimpleCard";
 import CaloriesEated from "../components/Charts/CaloriesEated";
 import HeaderResume from "../components/HeaderResume";
+import MostEated from "../components/Charts/MostEated";
 
 const Statistics = () => {
   return (
@@ -19,23 +20,12 @@ const Statistics = () => {
         </View>
       </SimpleCard>
       <SimpleCard>
-        <HeaderResume title={`Calorias Ingeridas na semana`} />
+        <HeaderResume title={`Alimento mais Ingeridos`} />
         <View style={{ alignItems: "center" }}>
-          <CaloriesEated />
+          <MostEated />
         </View>
       </SimpleCard>
-      <SimpleCard>
-        <HeaderResume title={`Calorias Ingeridas na semana`} />
-        <View style={{ alignItems: "center" }}>
-          <CaloriesEated />
-        </View>
-      </SimpleCard>
-      <SimpleCard>
-        <HeaderResume title={`Calorias Ingeridas na semana`} />
-        <View style={{ alignItems: "center" }}>
-          <CaloriesEated />
-        </View>
-      </SimpleCard>
+
       <View style={{ height: 100 }}></View>
     </ScrollView>
   );

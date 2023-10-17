@@ -85,7 +85,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
       if (response.status === 201) {
         toast.success("Adicionado com sucesso");
-        type === "food" ? getFoodsAtualData() : getWorkoutsAtualData();
+        type === "foods" ? getFoodsAtualData() : getWorkoutsAtualData();
       } else {
         toast.error("Erro ao adicionar");
       }
