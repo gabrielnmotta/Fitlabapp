@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, Button, TouchableOpacity } from "react-native";
-import { FIREBASE_AUTH } from "../../../FirebaseConfig";
+import { FIREBASE_AUTH } from "../../../../FirebaseConfig";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import Colors from "../../../constants/Colors";
 
 interface UserCardProps {
   userName: string;
@@ -15,7 +16,7 @@ const UserCard = ({ userName }: UserCardProps) => {
         <Text style={styles.userName}>{userName}</Text>
       </View>
       <TouchableOpacity onPress={() => FIREBASE_AUTH.signOut()}>
-        <Icon name="logout" size={30} color="#333" />
+        <Icon name="logout" size={30} color={Colors.primary} />
       </TouchableOpacity>
     </View>
   );
@@ -23,7 +24,7 @@ const UserCard = ({ userName }: UserCardProps) => {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "#618264",
+    backgroundColor: Colors.primary_500,
     paddingHorizontal: 20,
     paddingTop: 46,
     paddingBottom: 20,

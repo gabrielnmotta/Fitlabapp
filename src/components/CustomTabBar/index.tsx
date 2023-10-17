@@ -6,6 +6,7 @@ import {
   Platform,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Colors from "../../constants/Colors";
 
 export default function CustomTabBar({ state, descriptors, navigation }: any) {
   return (
@@ -48,14 +49,18 @@ export default function CustomTabBar({ state, descriptors, navigation }: any) {
                 <View
                   style={[
                     styles.innerButton,
-                    { backgroundColor: isFocused ? "#D0E7D2" : "transparent" },
+                    {
+                      backgroundColor: isFocused
+                        ? Colors.primary_100
+                        : "transparent",
+                    },
                   ]}
                 >
                   <MaterialCommunityIcons
                     name={options.tabBarIcon}
                     key={route.index}
                     size={30}
-                    color={isFocused ? "#618264" : "#535353"}
+                    color={isFocused ? Colors.primary_900 : Colors.neutral}
                   />
                 </View>
               </View>

@@ -7,11 +7,11 @@ import { useEffect, useState } from "react";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { FIREBASE_AUTH, db } from "./FirebaseConfig";
 import { Routes } from "./src/routes";
-import { Dimensions } from "react-native";
-import UserCard from "./src/components/UserCard";
+import UserCard from "./src/components/Card/UserCard";
 import SignUp from "./src/screens/SignUp";
 import { doc, getDoc } from "firebase/firestore";
 import { AppProvider } from "./src/context/AppContext";
+import "react-native-gesture-handler";
 
 const Stack = createNativeStackNavigator();
 

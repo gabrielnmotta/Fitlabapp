@@ -16,6 +16,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
+import Colors from "../constants/Colors";
 
 const Login = () => {
   const [email, setEmail] = useState<string>("");
@@ -133,6 +134,8 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
   signUpText: {
-    color: "#009688",
+    color: Colors.primary_900,
+    fontWeight: "bold",
+    textDecorationLine: "underline",
   },
 });

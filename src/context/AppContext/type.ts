@@ -16,6 +16,15 @@ export interface WorkoutI {
   duration?: number;
 }
 
+export interface AddingDataI {
+  id: number;
+  name: string;
+  img: string;
+  calories: number;
+  duration?: number;
+  quantity?: number;
+}
+
 export interface ImagePathsType {
   [key: string]: ImageSourcePropType;
 }
@@ -29,4 +38,6 @@ export interface AppContextI {
   foodsAtualData: FoodI[];
   getWorkoutsAtualData: () => void;
   workoutsAtualData: WorkoutI[];
+  postData: (type: string, data: AddingDataI) => void;
+  postDataLoading: boolean;
 }

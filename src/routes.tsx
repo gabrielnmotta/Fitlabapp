@@ -2,7 +2,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Principal from "./screens/Principal";
 import Foods from "./screens/Foods";
 import CustomTabBar from "./components/CustomTabBar";
-import Icon from "react-native-vector-icons/MaterialIcons";
 import Exercises from "./screens/Exercises";
 import Statistics from "./screens/Statistics";
 
@@ -38,7 +37,7 @@ export function Routes() {
         }}
       />
       <Tab.Screen
-        name="Excercises"
+        name="Exercises"
         component={Exercises}
         options={{
           tabBarIcon: "dumbbell" as any,

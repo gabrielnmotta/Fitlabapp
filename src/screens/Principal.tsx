@@ -71,6 +71,7 @@ const Principal = ({ navigation }: RouterProps) => {
         <HeaderResume
           title={`Alimentação de hoje - ${currentDate}`}
           icon="playlist-plus"
+          path="Foods"
         />
         <ScrollView
           horizontal
@@ -94,6 +95,7 @@ const Principal = ({ navigation }: RouterProps) => {
         <HeaderResume
           title={`Exercícios de hoje - ${currentDate}`}
           icon="playlist-plus"
+          path="Exercises"
         />
         <ScrollView
           horizontal

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, Alert } from "react-native";
 import React from "react";
 import Spacing from "../../constants/Spacing";
 import FontSize from "../../constants/FontSize";
@@ -22,8 +22,39 @@ const HeaderResume: React.FC<Props> = ({
 }) => {
   const navigation = useNavigation();
 
+  const customAlert = (title: string, message: string) => {
+    Alert.alert(
+      title,
+      message,
+      [
+        {
+          text: "OK",
+          onPress: () => console.log("OK Pressed"),
+          style: "cancel",
+        },
+      ],
+      {
+        cancelable: false,
+      }
+    );
+  };
+
   const handlePress = () => {
-    navigation.navigate(path as never);
+    if (path === "Exercises") {
+      navigation.navigate(path as never);
+      customAlert(
+        "ATENÇÃO",
+        "Para adicionar exercício à sua rotina diária escolha o exercício desejado, clique no botão + e depois digite o tempo que você praticou o exercìcio e confirma."
+      );
+    } else if (path === "Foods") {
+      navigation.navigate(path as never);
+      customAlert(
+        "ATENÇÃO",
+        "Para adicionar alimento à sua rotina diária escolha o alimento desejado, clique no botão + e depois digite a quantidade (em gramas) que você ingeriu e confirma."
+      );
+    } else {
+      navigation.navigate(path as never);
+    }
   };
 
   return (
