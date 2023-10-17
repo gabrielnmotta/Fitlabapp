@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { AddingDataI, AppContextI, FoodI, WorkoutI } from "./type";
 import { toast } from "react-toastify";
+import AmbientVariables from "../../constants/AmbientVariables";
 
 const AppContext = createContext<AppContextI>({} as AppContextI);
 
@@ -15,7 +16,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   const getFoods = async () => {
     try {
-      const response = await fetch("http://192.168.1.15:3000/api/v1/foods");
+      const response = await fetch(`${AmbientVariables.API_URL}/foods`);
       const data = await response.json();
 
       if (response.status === 200) {
@@ -28,7 +29,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   const getWorkouts = async () => {
     try {
-      const response = await fetch("http://192.168.1.15:3000/api/v1/workouts");
+      const response = await fetch(`${AmbientVariables.API_URL}/workouts`);
       const data = await response.json();
 
       if (response.status === 200) {
@@ -42,7 +43,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const getWorkoutsAtualData = async () => {
     try {
       const response = await fetch(
-        "http://192.168.1.15:3000/api/v1/workouts_atual_data"
+        `${AmbientVariables.API_URL}/workouts_atual_data`
       );
       const data = await response.json();
 
@@ -57,7 +58,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const getFoodsAtualData = async () => {
     try {
       const response = await fetch(
-        "http://192.168.1.15:3000/api/v1/foods_atual_data"
+        `${AmbientVariables.API_URL}/foods_atual_data`
       );
       const data = await response.json();
 
@@ -73,7 +74,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     setPostDataLoading(true);
     try {
       const response = await fetch(
-        `http://192.168.1.15:3000/api/v1/${type}_atual_data`,
+        `${AmbientVariables.API_URL}/${type}_atual_data`,
         {
           method: "POST",
           headers: {

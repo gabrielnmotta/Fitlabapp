@@ -7,25 +7,26 @@ import { GridComponent } from "echarts/components";
 import { SVGRenderer, SkiaChart } from "@wuba/react-native-echarts";
 import { PieChart } from "echarts/charts";
 import { MostEatedI } from "../../../context/AppContext/type";
+import AmbientVariables from "../../../constants/AmbientVariables";
 
 echarts.use([SVGRenderer, LineChart, GridComponent, PieChart, RadarChart]);
-const [mostEated, setMostEated] = useState<MostEatedI>({} as MostEatedI);
-
-const getMostEated = async () => {
-  try {
-    const response = await fetch("http://192.168.1.15:3000/api/v1/most_eated");
-    const data = await response.json();
-
-    if (response.status === 200) {
-      setMostEated(data);
-    }
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-};
 
 const MostEated = () => {
   const skiaRef = useRef(null);
+  const [mostEated, setMostEated] = useState<MostEatedI>({} as MostEatedI);
+
+  const getMostEated = async () => {
+    try {
+      const response = await fetch(`${AmbientVariables.API_URL}/most_eated`);
+      const data = await response.json();
+
+      if (response.status === 200) {
+        setMostEated(data);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   useEffect(() => {
     getMostEated();
@@ -48,7 +49,7 @@ const MostEated = () => {
           type: "pie",
           radius: "50%",
           data: [
-            mostEated ? mostEated : { value: 1048, name: "Maçã" },
+            mostEated.name ? mostEated : { value: 1048, name: "Maçã" },
             { value: 735, name: "Uva" },
             { value: 580, name: "Arroz" },
             { value: 484, name: "Frango" },

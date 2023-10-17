@@ -20,9 +20,6 @@ interface RouterProps {
 }
 
 const Principal = ({ navigation }: RouterProps) => {
-  const [totalCaloriesIngested, setTotalCaloriesIngested] = useState<number>(0);
-  const [totalCaloriesSpended, setTotalCaloriesSpended] = useState<number>(0);
-
   const { height } = Dimensions.get("window");
   const {
     getFoodsAtualData,
@@ -34,7 +31,7 @@ const Principal = ({ navigation }: RouterProps) => {
 
   useEffect(() => {
     getFoodsAtualData();
-    getFoodsAtualData();
+    getWorkoutsAtualData();
   }, []);
 
   return (
