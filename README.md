@@ -59,7 +59,7 @@ Abra o terminal cmd
 ipconfig 
 ```
 
-Copie o IPV4, vá no mockoon na aba "Settings" e na API URL cole o IPV4. Após isso abra o arquivo "fitlabapp.json" dentro do mockoon.
+Copie o IPV4, vá no mockoon na aba "Settings" e na API URL cole o IPV4. Após isso abra o arquivo "fitlabAPI.json" que está dentro do respositório dentro do mockoon.
 Feito isso no código do programa vá na pasta "src", depois na pasta "constants" e no arquivo "AmbientVariables.ts" identifique o API_URL e mude o IPV4 para o seu.
 
 ## Rodando o projeto
